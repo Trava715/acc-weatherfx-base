@@ -2,25 +2,28 @@
 -- Some general constant values, should not be changed real-time.
 --------
 
-SceneBrightnessMultNoPP = 1  -- without post-processing active: brightness multiplier for the whole scene
+SceneBrightnessMultNoPP = 1.5  -- without post-processing active: brightness multiplier for the whole scene
 SceneBrightnessMultPP = 2.5  -- with post-processing active: brightness multiplier for the scene (in most cases, gets compensated by auto-exposure)
-FilterBrightnessMultPP = 1.5 -- with post-processing active: brightness adjustment applied after auto-exposure
+FilterBrightnessMultPP = 1 -- with post-processing active: brightness adjustment applied after auto-exposure
 
 TimelapsyCloudSpeed = true -- change to false to stop clouds from moving all fast if time goes faster
 SmoothTransition = true -- smooth transition between weather types (even if change was sudden)
+BlurShadowsWhenSunIsLow = false -- reduce shadows resolution for when sun is low
 
-UseSkyV2 = true
 SunIntensity = 20 -- how bright sun is in general
-SunShapeIntensity = 100 -- brightness of sun circle, higher than usual for that massive post-processing glare
 SunMieIntensity = 3 -- brightness of glow around sun on the sky 
+SunLightIntensity = 1.20 -- brightness of sun light cast on the scene
+AmbientLightIntensity = 10 -- brightness of ambient light on the scene
+FogBacklitIntensity = 2 -- brightness of fog backlit
+MoonLightMult = 0.5 -- how bright is moon light
+SkyBrightness = 0.5 -- sky brightness multiplier
+
 AdaptationSpeed = 10
 SunRaysIntensity = 0.02 -- some good PP-filters expode with sun rays at full strength for some reason
-SunRaysCustom = true -- use fully custom sun ray parameters instead of SunRaysIntensity
-SunColor = rgb(1, 0.912, 0.696)
-SkySaturationBoost = 2
+SunRaysCustom = false -- use fully custom sun ray parameters instead of SunRaysIntensity
+SunColor =  rgb(1, 1, 1) --rgb(1, 0.912, 0.696)
 MoonColor = rgb(0.6, 0.8, 1):scale(2)
-MoonLightMult = 0.5 -- how bright is moon light
-LightPollutionBrightness = 0.05
+LightPollutionBrightness = 0.33
 
 CloudUseAtlas = true
 CloudSpawnScale = 0.8

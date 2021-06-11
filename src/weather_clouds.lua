@@ -11,11 +11,14 @@ local windSpeed = 0
 -- How many textures of different types are available, with sizes and offsets in the atlas
 local CloudTextures = {
   Blurry = { group = 'b', count = 16, start = vec2(0, 0/8), size = vec2(2/16, 1/8) },
-  Hovering = { group = 'h', count = 9, start = vec2(0, 2/8), size = vec2(2/16, 1/8) },
-  Spread = { group = 's', count = 4, start = vec2(0, 4/8), size = vec2(2/16, 1/8) },
-  Flat = { group = 'f', count = 3, start = vec2(0, 6/8), size = vec2(2/16, 1/8) },
+  Hovering = { group = 'h', count = 16, start = vec2(0, 2/8), size = vec2(2/16, 1/8) },
+  Spread = { group = 's', count = 6, start = vec2(0, 4/8), size = vec2(2/16, 1/8) },
+  Flat = { group = 'f', count = 5, start = vec2(0, 6/8), size = vec2(2/16, 1/8) },
   Bottoms = { group = 'd', count = 5, start = vec2(0, 7/8), size = vec2(1/16, 1/8) },
 }
+
+-- Calculates base Y coordinate of a cloud from a circle of clouds near horizon
+require 'src/weather_clouds_pertrack'
 
 -- Creates a new cloud and sets it using `fn`, which would be one of `CloudTypes` functions
 local function createCloud(fn, arg1, arg2)
@@ -184,7 +187,7 @@ function CloudTypes.Low(cloud, pos, distance)
   cloud.procMap = vec2(0.35, 0.75)
   cloud.procSharpnessMult = 0.8
   cloud.extraFidelity = 1.2
-  cloud.color = rgb(1, 1, 1) * (1 - distance * 0.3)
+  cloud.color = rgb(0.85,0.85,0.85) * (1 - distance * 0.3)
   cloud.opacity = 0.6 * (1 - distance * 0.8)
   cloud.orderBy = 1e12 + distance * 1e10
   cloud.extras.opacity = cloud.opacity
